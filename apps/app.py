@@ -7,6 +7,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 # PAGE CONFIGURATION
 # ==========================================================
 
+import os
+
 st.set_page_config(
     page_title="Shopper Spectrum",
     page_icon="🛒",
@@ -82,7 +84,10 @@ def load_data():
     # Correct paths for your project
     sales_df = pd.read_csv("data/cleaned_online_retail.csv")
     rfm_df = pd.read_csv("data/rfm_customer_segments.csv")
+    if os.path.exists("data/product_similarity_matrix.csv"):
     similarity_df = pd.read_csv("data/product_similarity_matrix.csv")
+    else:
+    similarity_df = None
 
     sales_df["InvoiceDate"] = pd.to_datetime(sales_df["InvoiceDate"])
 
@@ -898,6 +903,10 @@ elif page == "🎯 Customer Segmentation":
 # ==========================================================
 
 elif page == "🤖 Product Recommendation":
+    if similarity_df is None:
+    st.warning("⚠️ Product Recommendation is temporarily unavailable in the online demo.")
+    st.info("The recommendation engine was removed from the deployed version because the similarity matrix exceeded GitHub's file size limit.")
+    st.stop()
 
     st.title("🤖 Product Recommendation Engine")
     st.caption("Recommend Similar Products using Cosine Similarity")
