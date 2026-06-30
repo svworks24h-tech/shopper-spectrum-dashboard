@@ -2,12 +2,11 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from sklearn.metrics.pairwise import cosine_similarity
-
+import os
 # ==========================================================
 # PAGE CONFIGURATION
 # ==========================================================
 
-import os
 
 st.set_page_config(
     page_title="Shopper Spectrum",
@@ -85,9 +84,9 @@ def load_data():
     sales_df = pd.read_csv("data/cleaned_online_retail.csv")
     rfm_df = pd.read_csv("data/rfm_customer_segments.csv")
     if os.path.exists("data/product_similarity_matrix.csv"):
-    similarity_df = pd.read_csv("data/product_similarity_matrix.csv")
+        similarity_df = pd.read_csv("data/product_similarity_matrix.csv")
     else:
-    similarity_df = None
+        similarity_df = None
 
     sales_df["InvoiceDate"] = pd.to_datetime(sales_df["InvoiceDate"])
 
