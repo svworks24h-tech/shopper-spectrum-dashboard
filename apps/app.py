@@ -929,10 +929,10 @@ if page == "🤖 Product Recommendation":
         })
 
         # Remove selected product
-        recommendations = recommendations[
-            recommendations["Recommended Product"] != selected_product
-        ]
-
+        recommendations["Similarity Score"] = pd.to_numeric(
+        recommendations["Similarity Score"],
+        errors="coerce"
+)
         # Top 5 recommendations
         recommendations = (
             recommendations
