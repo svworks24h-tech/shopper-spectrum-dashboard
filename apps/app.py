@@ -901,16 +901,16 @@ elif page == "🎯 Customer Segmentation":
 # PRODUCT RECOMMENDATION ENGINE
 # ==========================================================
 
-    if page == "🤖 Product Recommendation":
+if page == "🤖 Product Recommendation":
     
 
-        st.title("🤖 Product Recommendation Engine")
-        st.caption("Recommend Similar Products using Cosine Similarity")
+    st.title("🤖 Product Recommendation")
+    st.write("Page Loaded Successfully")
 
     # Product names
-        product_list = similarity_df.columns.tolist()
+    product_list = similarity_df.columns.tolist()
 
-        selected_product = st.selectbox(
+    selected_product = st.selectbox(
         "Choose a Product",
         product_list
     )
