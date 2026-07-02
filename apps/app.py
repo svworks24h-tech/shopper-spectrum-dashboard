@@ -901,19 +901,16 @@ elif page == "🎯 Customer Segmentation":
 # PRODUCT RECOMMENDATION ENGINE
 # ==========================================================
 
-elif page == "🤖 Product Recommendation":
-    if similarity_df is None:
-        st.warning("⚠️ Product Recommendation is temporarily unavailable in the online demo.")
-        st.info("The recommendation engine was removed from the deployed version because the similarity matrix exceeded GitHub's file size limit.")
-        st.stop()
+    if page == "🤖 Product Recommendation":
+    
 
         st.title("🤖 Product Recommendation Engine")
         st.caption("Recommend Similar Products using Cosine Similarity")
 
     # Product names
-    product_list = similarity_df.columns.tolist()
+        product_list = similarity_df.columns.tolist()
 
-    selected_product = st.selectbox(
+        selected_product = st.selectbox(
         "Choose a Product",
         product_list
     )
